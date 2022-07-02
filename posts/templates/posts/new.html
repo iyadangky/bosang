@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국자동차보상센터</title>
+</head>
+
+<body>
+    <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
+    <div class="container">
+        <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5><span class="material-icons me-2">location_on</span>이 름</h5>
+            <input id="client" type="text" name="client" class="form-control mb-4" placeholder="">
+            
+            <h5><span class="material-icons me-2">engineering</span>전화번호</h5>
+            <input id="phoneNumber" type="text" name="phoneNumber" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">location_on</span>연락방법</h5>
+            <input id="contact" type="text" name="contact" class="form-control mb-4" placeholder="카카오톡, 전화, 문자">
+
+            <h5><span class="material-icons me-2">location_on</span>차 종</h5>
+            <input id="carModel" type="text" name="carModel" class="form-control mb-4" placeholder="그랜져">
+
+            <h5><span class="material-icons me-2">location_on</span>차량번호</h5>
+            <input id="carNumber" type="text" name="carNumber" class="form-control mb-4" placeholder="01가2345">
+
+            <h5><span class="material-icons me-2">location_on</span>출고연월</h5>
+            <input id="birth" type="text" name="birth" class="form-control mb-4" placeholder="22년1월">
+
+            <h5><span class="material-icons me-2">location_on</span>등 급</h5>
+            <input id="trim" type="text" name="trim" class="form-control mb-4" placeholder="프리미엄">
+
+            <h5><span class="material-icons me-2">location_on</span>유 종</h5>
+            <input id="fuel" type="text" name="fuel" class="form-control mb-4" placeholder="휘발유/디젤/하이브리드/전기">
+
+            <h5><span class="material-icons me-2">location_on</span>구동방식</h5>
+            <input id="driveType" type="text" name="driveType" class="form-control mb-4" placeholder="2륜 또는 4륜">
+
+            <h5><span class="material-icons me-2">location_on</span>에어백 전개 부위</h5>
+            <input id="airbag" type="text" name="airbag" class="form-control mb-4" placeholder="운전석, 운전석 측면, 조수석, 조수석 측면 등">
+
+            <h5><span class="material-icons me-2">location_on</span>주행거리(km)</h5>
+            <input id="mileage" type="text" name="mileage" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">location_on</span>사고날짜</h5>
+            <input id="eventDate" type="text" name="eventDate" class="form-control mb-4" placeholder="22년 01월 02일">
+
+            <h5><span class="material-icons me-2">location_on</span>수리/견적금액(만원)</h5>
+            <input id="repairCost" type="text" name="repairCost" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">location_on</span>보험사가 제시한 금액(만원)</h5>
+            <input id="proposedCompensation" type="text" name="proposedCompensation" class="form-control mb-4" placeholder="전손 2,000 또는 미수선 1,500">
+
+            <h5><span class="material-icons me-2">location_on</span>가해자 보험사</h5>
+            <input id="insuranceCompany" type="text" name="insuranceCompany" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">location_on</span>사고차 보관지역</h5>
+            <input id="location" type="text" name="location" class="form-control mb-4" placeholder="수원시">
+
+            <h5><span class="material-icons me-2">content_paste</span>기타항목</h5>
+            <div class="border rounded-3 mb-4">
+                <div class="form-check, m-3">
+                    <input class="form-check-input" type="checkbox" name="others1" value="확인" id="others1">
+                    <label class="form-check-label" for="others1">렌트/리스차량임</label>
+                </div>
+    
+                <div class="form-check, m-3">
+                    <input class="form-check-input" type="checkbox" name="others2" value="확인" id="others2">
+                    <label class="form-check-label" for="others2">격락손해 상담요청</label>
+                </div>
+    
+                <div class="form-check, m-3">
+                    <input class="form-check-input" type="checkbox" name="others3" value="확인" id="others3">
+                    <label class="form-check-label" for="others3">대인합의 상담요청</label>
+                </div>
+            </div>
+            
+            <h5><span class="material-icons me-2">location_on</span>문의사항</h5>
+            <textarea name="note" id="note" cols="30" rows="10" class="form-control mb-4"></textarea>
+    
+            <h5><span class="material-icons me-2">add_a_photo</span> 차량등록증</h5>
+            <input type="file" class="form-control mb-4" name="image1" id="image1">
+            
+            <h5><span class="material-icons me-2">add_a_photo</span> 견적서</h5>
+            <input type="file" class="form-control mb-4" name="image2" id="image2">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image3" id="image3">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image4" id="image4">
+            
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image5" id="image5">
+            
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image6" id="image6">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image7" id="image7">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image8" id="image8">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image9" id="image9">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image10" id="image10">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image11" id="image11">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image12" id="image12">    
+    
+            <div class="mb-3">               
+            <button type="submit" class="btn btn-primary">상담신청</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
