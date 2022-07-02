@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <h5 class="mb-3">전손/미수선 상담신청 상세보기</h5>
+    <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
     <div class="container">
         <h5><span class="material-icons me-2">engineering</span> 상세내용</h5>
     
@@ -107,6 +107,11 @@
                     </tr>
 
                     <tr>
+                        <td class="cell text-center">본인 과실비율</td>
+                        <td class="text-center">{{ post.faultRatio }}</td>
+                    </tr>
+
+                    <tr>
                         <td class="cell text-center">수리/견적금액</td>
                         <td class="text-center">{{ post.repairCost }}</td>
                     </tr>
@@ -115,12 +120,7 @@
                         <td class="cell text-center">보험사가 제시한 금액</td>
                         <td class="text-center">{{ post.proposedCompensation }}</td>
                     </tr>
-
-                    <tr>
-                        <td class="cell text-center">과실비율</td>
-                        <td class="text-center">{{ post.faultRatio }}</td>
-                    </tr>
-
+                    
                  </tbody>
             </table>
     
@@ -130,36 +130,36 @@
             <div class="border rounded-3 mb-4">
                 {% if post.others1 %}
                 <div class="form-check mt-2 ms-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckCheckedDisabled" checked disabled>
                     <label class="form-check-label" for="flexCheckCheckedDisabled">렌트/리스차량임</label>
                 </div>
                 {% else %}
                 <div class="form-check mt-2 ms-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckDisabled" disabled>
                     <label class="form-check-label" for="flexCheckDisabled">렌트/리스차량임</label>
                 </div>
                 {% endif %}
     
                 {% if post.others2 %}
                 <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckCheckedDisabled" checked disabled>
                     <label class="form-check-label" for="flexCheckCheckedDisabled">격락손해 상담요청</label>
                 </div>
                 {% else %}
                 <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckDisabled" disabled>
                     <label class="form-check-label" for="flexCheckDisabled">격락손해 상담요청</label>
                 </div>
                 {% endif %}
     
                 {% if post.others3 %}
                 <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckCheckedDisabled" checked disabled>
                     <label class="form-check-label" for="flexCheckCheckedDisabled">대인합의 상담요청</label>
                 </div>
                 {% else %}
                 <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckDisabled" disabled>
                     <label class="form-check-label" for="flexCheckDisabled">대인합의 상담요청</label>
                 </div>
                 {% endif %}
@@ -169,12 +169,11 @@
             <div class="border rounded-3 mb-4">
                 <p>{{ post.note }}</p>
             </div>
-      
+    
         <div>
             {% if post.image1 %}
             <h5><span class="material-icons me-2">image</span> 차량등록증</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image1 }}">{{ post.image1 }}</a>
                 <img class="img-fluid rounded mx-auto d-block" style="width: 500px;" src="{{ post.image1.url }}" alt="차량등록증">
             </div>
             {% endif %}
@@ -184,7 +183,6 @@
             {% if post.image2 %}
             <h5><span class="material-icons me-2">image</span> 견적서</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image2 }}">{{ post.image2 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image2.url }}" alt="견적서">
             </div>
             {% endif %}
@@ -194,7 +192,6 @@
             {% if post.image3 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image3 }}">{{ post.image3 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image3.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -204,7 +201,6 @@
             {% if post.image4 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image4 }}">{{ post.image4 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image4.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -214,7 +210,6 @@
             {% if post.image5 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image5 }}">{{ post.image5 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image5.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -224,7 +219,6 @@
             {% if post.image6 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image6 }}">{{ post.image6 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image6.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -234,7 +228,6 @@
             {% if post.image7 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image7 }}">{{ post.image7 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image7.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -244,7 +237,6 @@
             {% if post.image8 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image8 }}">{{ post.image8 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image8.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -254,7 +246,6 @@
             {% if post.image9 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image9 }}">{{ post.image9 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image9.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -264,7 +255,6 @@
             {% if post.image10 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image10 }}">{{ post.image10 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image10.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -274,7 +264,6 @@
             {% if post.image11 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image11 }}">{{ post.image11 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image11.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
@@ -284,14 +273,65 @@
             {% if post.image12 %}
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
-                <a href="/posts/download?path={{ post.image12 }}">{{ post.image12 }}</a>
                 <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image12.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
         </div>
 
+
+
+        <h5><span class="material-icons me-2">engineering</span> 추가기록</h5>
+        <div class="border rounded-3 mb-4">
+            <p>{{ post.addition }}</p>
+        </div>
+
+    <div>
+        {% if post.image13 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <img class="img-fluid rounded mx-auto d-block" style="width: 500px;" src="{{ post.image13.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image14 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image14.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image15 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image15.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image16 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image16.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image17 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image17.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+    
         <a href="{% url 'posts:index' %}" class="btn btn-primary ms-1 mb-3">전체목록</a>
-        <a href="{% url 'posts:add' post.id %}" class="btn btn-primary ms-1 mb-3">추가기록</a>        
+        <a href="{% url 'posts:add' post.id %}" class="btn btn-primary ms-1 mb-3">다시추가</a>         
         
     </div>
 </body>

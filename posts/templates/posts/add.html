@@ -16,10 +16,10 @@
 <body>
     <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
     <div class="container">
-        <form method="POST" action="{% url 'posts:update' post.id %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'posts:record' post.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <h5><span class="material-icons me-2">location_on</span>이 름</h5>
-            <input id="client" type="text" name="client" value="{{ post.client }}" class="form-control mb-4">
+            <input id="client" type="text" name="client" value="{{ post.client }}" class="form-control mb-4" >
             
             <h5><span class="material-icons me-2">engineering</span>전화번호</h5>
             <input id="phoneNumber" type="text" name="phoneNumber" value="{{ post.phoneNumber }}" class="form-control mb-4">
@@ -149,8 +149,29 @@
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image12" id="image12">
 
+
+
+            <h5><span class="material-icons me-2">location_on</span>추가기록</h5>
+            <textarea name="addition" id="addition" cols="30" rows="10" class="form-control mb-4"></textarea>
+    
+            <h5><span class="material-icons me-2">add_a_photo</span> 사양 조회 및 출고가 조회</h5>
+            <input type="file" class="form-control mb-4" name="image13" id="image13">
+            
+            <h5><span class="material-icons me-2">add_a_photo</span> 추가 사진 및 파일</h5>
+            <input type="file" class="form-control mb-4" name="image14" id="image14">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 추가 사진 및 파일</h5>
+            <input type="file" class="form-control mb-4" name="image15" id="image15">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 추가 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image16" id="image16">
+
+            <h5><span class="material-icons me-2">add_a_photo</span> 추가 사진 및 기타 파일</h5>
+            <input type="file" class="form-control mb-4" name="image17" id="image17">
+
+
             <div class="mb-3">               
-            <button type="submit" class="btn btn-primary">수정완료</button>
+            <button type="submit" class="btn btn-primary">추가완료</button>
             </div>
         </form>
     </div>

@@ -97,6 +97,21 @@
                     </tr>
 
                     <tr>
+                        <td class="cell text-center">가해자 보험사</td>
+                        <td class="text-center">{{ post.insuranceCompany }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">본인 과실비율</td>
+                        <td class="text-center">{{ post.faultRatio }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">사고차 보관장소</td>
+                        <td class="text-center">{{ post.location }}</td>
+                    </tr>
+
+                    <tr>
                         <td class="cell text-center">수리/견적금액</td>
                         <td class="text-center">{{ post.repairCost }}</td>
                     </tr>
@@ -105,16 +120,7 @@
                         <td class="cell text-center">보험사가 제시한 금액</td>
                         <td class="text-center">{{ post.proposedCompensation }}</td>
                     </tr>
-
-                    <tr>
-                        <td class="cell text-center">가해자 보험사</td>
-                        <td class="text-center">{{ post.insuranceCompany }}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="cell text-center">사고차 보관장소</td>
-                        <td class="text-center">{{ post.location }}</td>
-                    </tr>
+                                 
                  </tbody>
             </table>
     
