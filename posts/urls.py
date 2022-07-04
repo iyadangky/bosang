@@ -12,5 +12,7 @@ urlpatterns = [
     path('<int:post_id>/update/', views.update, name="update"),
     path('<int:post_id>/add/', views.add, name="add"),
     path('<int:post_id>/record/', views.record, name="record"),
+    path('<int:post_id>/bidding/', views.bidding, name="bidding"),
+    path('<int:post_id>/tender/', views.tender, name="tender"),
     path('download/', views.file_download, name='file_download'),
 ]

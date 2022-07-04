@@ -5,17 +5,22 @@ from django.conf import settings
 from .models import Post
 from django.utils import timezone
 import os
+from django.contrib.auth.decorators import login_required
+import csv
+from django.contrib.admin.views.decorators import staff_member_required
 # from django.contrib.auth.decorators import login_required
 # import csv
 # from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
+@login_required
 def index(request):
     posts = Post.objects.all()
     context = {'posts' : posts}
     return render(request, 'posts/index.html', context)
 
+@login_required
 def detail(request, post_id):
     post = Post.objects.get(id=post_id)
     context = {'post' : post}
@@ -48,6 +53,7 @@ def create(request):
     others3 = request.POST.get('others3')
     note = request.POST.get('note')
     addition = request.POST.get('addition')
+    price = request.POST.get('price')
     image1 = request.FILES.get('image1')
     image2 = request.FILES.get('image2')
     image3 = request.FILES.get('image3')
@@ -65,7 +71,7 @@ def create(request):
     image15 = request.FILES.get('image15')
     image16 = request.FILES.get('image16')
     image17 = request.FILES.get('image17')
-    post = Post(created_at=created_at, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
+    post = Post(created_at=created_at, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
     post.save()
     context = {'post' : post}
     return render(request, 'posts/create.html', context)
@@ -77,7 +83,6 @@ def edit(request, post_id):
 
 def update(request, post_id):
     post = Post.objects.get(id=post_id)
-    post.created_at = timezone.now()
     post.client = request.POST.get('client')
     post.phoneNumber = request.POST.get('phoneNumber')
     post.contact = request.POST.get('contact')
@@ -115,14 +120,15 @@ def update(request, post_id):
     context = {'post' : post}
     return render(request, 'posts/create.html', context)
 
+@login_required
 def add(request, post_id):
     post = Post.objects.get(id=post_id)
     context = {'post' : post}
     return render(request, 'posts/add.html', context)
 
+@login_required
 def record(request, post_id):
     post = Post.objects.get(id=post_id)
-    post.created_at = timezone.now()
     post.client = request.POST.get('client')
     post.phoneNumber = request.POST.get('phoneNumber')
     post.contact = request.POST.get('contact')
@@ -160,6 +166,20 @@ def record(request, post_id):
     context = {'post' : post}
     return render(request, 'posts/addition.html', context)
 
+@login_required
+def bidding(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {'post' : post}
+    return render(request, 'posts/bidding.html', context)
+
+@login_required
+def tender(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.price = request.POST.get('price')
+    post.save()
+    return redirect('posts:index')
+
+@login_required
 def file_download(request):
     path = request.GET['path']
     file_path = os.path.join(settings.MEDIA_ROOT, path)

@@ -26,6 +26,7 @@ class Post(models.Model):
     others3 = models.CharField(max_length=50, null=True)
     note = models.CharField(max_length=500, null=True)
     addition = models.CharField(max_length=500, null=True)
+    price = models.CharField(max_length=50, null=True)
     image1 = models.FileField(upload_to='posts', null=True)
     image2 = models.FileField(upload_to='posts', null=True)
     image3 = models.FileField(upload_to='posts', null=True)

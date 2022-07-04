@@ -1,21 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한국자동차보상센터</title>
-</head>
-
-<body>
-    <h5 class="mb-3">전손/미수선 상담신청 상세보기</h5>
+{% block content %}
+    {% if request.user.is_staff %}
     <div class="container">
+        <h5 class="mb-3">전손/미수선 상담신청 상세보기</h5>
         <h5><span class="material-icons me-2">engineering</span> 상세내용</h5>
     
             <table class="table mb-4">
@@ -29,6 +17,11 @@
                     <tr>
                         <td class="cell text-center">번 호</td>
                         <td class="text-center">{{ post.id }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">입력금액</td>
+                        <td class="text-center">{{ post.price }}</td>
                     </tr>
     
                     <tr>
@@ -292,7 +285,209 @@
 
         <a href="{% url 'posts:index' %}" class="btn btn-primary ms-1 mb-3">전체목록</a>
         <a href="{% url 'posts:add' post.id %}" class="btn btn-primary ms-1 mb-3">추가기록</a>        
+    </div>
+    
+    {% else %}
+    <div class="container">
+        <h5 class="mb-3">전손/미수선 상담신청 상세보기</h5>
+        <h5><span class="material-icons me-2">engineering</span> 상세내용</h5>
+    
+            <table class="table mb-4">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th class="cell">구 분</td>
+                        <th>내 용</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cell text-center">번 호</td>
+                        <td class="text-center">{{ post.id }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">입력금액</td>
+                        <td class="text-center">{{ post.price }}</td>
+                    </tr>
+    
+                    <tr>
+                        <td class="cell text-center">작성일시</td>
+                        <td class="text-center">{{ post.created_at }}</td>
+                    </tr>    
+
+                    <tr>
+                        <td class="cell text-center">차 종</td>
+                        <td class="text-center">{{ post.carModel }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">차량번호</td>
+                        <td class="text-center">{{ post.carNumber }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">연 식</td>
+                        <td class="text-center">{{ post.birth }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">등 급</td>
+                        <td class="text-center">{{ post.trim }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">유 종</td>
+                        <td class="text-center">{{ post.fuel }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">구동방식</td>
+                        <td class="text-center">{{ post.driveType }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">에어백 전개 부위</td>
+                        <td class="text-center">{{ post.airbag }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">주행거리</td>
+                        <td class="text-center">{{ post.mileage }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">사고차 보관장소</td>
+                        <td class="text-center">{{ post.location }}</td>
+                    </tr>
+
+                 </tbody>
+            </table>
+      
+        <div>
+            {% if post.image1 %}
+            <h5><span class="material-icons me-2">image</span> 차량등록증</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image1 }}">{{ post.image1 }}</a>
+                <img class="img-fluid rounded mx-auto d-block" style="width: 500px;" src="{{ post.image1.url }}" alt="차량등록증">
+            </div>
+            {% endif %}
+        </div>
+    
+        <div>
+            {% if post.image2 %}
+            <h5><span class="material-icons me-2">image</span> 견적서</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image2 }}">{{ post.image2 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image2.url }}" alt="견적서">
+            </div>
+            {% endif %}
+        </div>
+    
+        <div>
+            {% if post.image3 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image3 }}">{{ post.image3 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image3.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image4 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image4 }}">{{ post.image4 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image4.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image5 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image5 }}">{{ post.image5 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image5.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image6 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image6 }}">{{ post.image6 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image6.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image7 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image7 }}">{{ post.image7 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image7.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image8 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image8 }}">{{ post.image8 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image8.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image9 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image9 }}">{{ post.image9 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image9.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image10 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image10 }}">{{ post.image10 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image10.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image11 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image11 }}">{{ post.image11 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image11.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if post.image12 %}
+            <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
+            <div class='mb-4'>
+                <a href="/posts/download?path={{ post.image12 }}">{{ post.image12 }}</a>
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image12.url }}" alt="사진 및 기타 파일">
+            </div>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'posts:index' %}" class="btn btn-primary ms-1 mb-3">전체목록</a>
+        <a href="{% url 'posts:bidding' post.id %}" class="btn btn-primary ms-1 mb-3">금액입력</a>
         
     </div>
-</body>
-</html>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+{% endblock %}
