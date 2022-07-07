@@ -14,5 +14,7 @@ urlpatterns = [
     path('<int:post_id>/record/', views.record, name="record"),
     path('<int:post_id>/bidding/', views.bidding, name="bidding"),
     path('<int:post_id>/tender/', views.tender, name="tender"),
+    path('<int:post_id>/password/', views.password, name="password"),
+    path('<int:post_id>/enter/', views.enter, name="enter"),
     path('download/', views.file_download, name='file_download'),
 ]

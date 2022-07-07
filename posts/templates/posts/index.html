@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <h5 class="mb-3">전손/미수선 상담신청 리스트</h5>
-        {% if user == 'iyadangky' %}
+        {% if request.user.is_staff %}
         <table class="table text-center mb-4">
             <thead class="table-dark">
                 <tr>
@@ -27,26 +27,49 @@
             </tbody>
         </table>
         {% else %}
-        <table class="table text-center mb-4">
-            <thead class="table-dark">
-                <tr>
-                    <th>번호</th>
-                    <th>차량명</th>
-                    <th>차량번호</th>
-                    <th>상세</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for post in posts %}
-                <tr>
-                    <td>{{ post.id }}</td>
-                    <td>{{ post.carModel }}</td>
-                    <td>{{ post.carNumber }}</td>
-                    <td><a href="{% url 'posts:detail' post.id %}">보기</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            {% if request.user.is_authenticated %}
+            <table class="table text-center mb-4">
+                <thead class="table-dark">
+                    <tr>
+                        <th>번호</th>
+                        <th>차량명</th>
+                        <th>차량번호</th>
+                        <th>상세</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.carModel }}</td>
+                        <td>{{ post.carNumber }}</td>
+                        <td><a href="{% url 'posts:detail' post.id %}">보기</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <table class="table text-center mb-4">
+                <thead class="table-dark">
+                    <tr>
+                        <th>번호</th>
+                        <th>차량명</th>
+                        <th>차량번호</th>
+                        <th>상세</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.carModel }}</td>
+                        <td>{{ post.carNumber }}</td>
+                        <td><a href="{% url 'posts:password' post.id %}">보기</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
         {% endif %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

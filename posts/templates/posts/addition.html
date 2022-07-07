@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
-        <h5><span class="material-icons me-2">engineering</span> 상세내용</h5>
+        <h5><span class="material-icons me-2">description</span> 상세내용</h5>
     
             <table class="table mb-4">
                 <thead class="table-dark text-center">
@@ -113,7 +113,7 @@
     
                
             
-        <h5><span class="material-icons me-2">content_paste</span> 해당항목 체크(중복선택)</h5>
+        <h5><span class="material-icons me-2">check_box</span> 해당항목 체크(중복선택)</h5>
             <div class="border rounded-3 mb-4">
                 {% if post.others1 %}
                 <div class="form-check mt-2 ms-3">
@@ -152,7 +152,7 @@
                 {% endif %}
             </div>
 
-        <h5><span class="material-icons me-2">engineering</span> 문의사항</h5>
+        <h5><span class="material-icons me-2">help_center</span> 문의사항</h5>
             <div class="border rounded-3 mb-4">
                 <p>{{ post.note }}</p>
             </div>
@@ -267,7 +267,7 @@
 
 
 
-        <h5><span class="material-icons me-2">engineering</span> 추가기록</h5>
+        <h5><span class="material-icons me-2">edit_note</span> 추가기록</h5>
         <div class="border rounded-3 mb-4">
             <p>{{ post.addition }}</p>
         </div>

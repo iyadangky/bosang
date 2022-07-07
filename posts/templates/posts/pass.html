@@ -2,13 +2,13 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <form method="POST" action="{% url 'posts:tender' post.id %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'posts:enter' post.id %}" enctype="multipart/form-data">
             {% csrf_token %}
-            <h5><span class="material-icons me-2">request_quote</span>금액입력</h5>
-            <input id="price" type="text" name="price" class="form-control mb-4" placeholder="">
+            <h5><span class="material-icons me-2">lock_open</span>비밀번호</h5>
+            <input id="answer" type="text" name="answer" class="form-control mb-4" placeholder="">
                
             <div class="mb-3">               
-            <button type="submit" class="btn btn-primary">금액입력</button>
+            <button type="submit" class="btn btn-primary">입력</button>
             </div>
         </form>
     </div>

@@ -14,7 +14,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
-@login_required
 def index(request):
     posts = Post.objects.all()
     context = {'posts' : posts}
@@ -31,6 +30,7 @@ def new(request):
 
 def create(request):
     created_at = timezone.now()
+    password = request.POST.get('password')
     client = request.POST.get('client')
     phoneNumber = request.POST.get('phoneNumber')
     contact = request.POST.get('contact')
@@ -71,7 +71,7 @@ def create(request):
     image15 = request.FILES.get('image15')
     image16 = request.FILES.get('image16')
     image17 = request.FILES.get('image17')
-    post = Post(created_at=created_at, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
+    post = Post(created_at=created_at, password=password, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
     post.save()
     context = {'post' : post}
     return render(request, 'posts/create.html', context)
@@ -178,6 +178,22 @@ def tender(request, post_id):
     post.price = request.POST.get('price')
     post.save()
     return redirect('posts:index')
+
+def password(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {'post' : post}
+    return render(request, 'posts/pass.html', context)
+
+def enter(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {'post' : post}
+    answer = request.POST.get('answer')
+    password = post.password
+        
+    if  str(answer) == str(password):
+        return render(request, 'posts/edit.html', context)
+    else:
+        return redirect('posts:index')
 
 @login_required
 def file_download(request):

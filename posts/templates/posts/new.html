@@ -5,58 +5,63 @@
         <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            <h5><span class="material-icons me-2">location_on</span>이 름</h5>
+            <input id="price" type="hidden" name="price" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">lock</span>비밀번호</h5>
+            <input id="password" type="text" name="password" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">badge</span>이 름</h5>
             <input id="client" type="text" name="client" class="form-control mb-4" placeholder="">
             
-            <h5><span class="material-icons me-2">engineering</span>전화번호</h5>
+            <h5><span class="material-icons me-2">phone_iphone</span>전화번호</h5>
             <input id="phoneNumber" type="text" name="phoneNumber" class="form-control mb-4" placeholder="">
 
-            <h5><span class="material-icons me-2">location_on</span>연락방법</h5>
+            <h5><span class="material-icons me-2">connect_without_contact</span>연락방법</h5>
             <input id="contact" type="text" name="contact" class="form-control mb-4" placeholder="카카오톡, 전화, 문자">
 
-            <h5><span class="material-icons me-2">location_on</span>차 종</h5>
+            <h5><span class="material-icons me-2">directions_car</span>차 종</h5>
             <input id="carModel" type="text" name="carModel" class="form-control mb-4" placeholder="그랜져">
 
-            <h5><span class="material-icons me-2">location_on</span>차량번호</h5>
+            <h5><span class="material-icons me-2">pin</span>차량번호</h5>
             <input id="carNumber" type="text" name="carNumber" class="form-control mb-4" placeholder="01가2345">
 
-            <h5><span class="material-icons me-2">location_on</span>출고연월</h5>
+            <h5><span class="material-icons me-2">event</span>출고연월</h5>
             <input id="birth" type="text" name="birth" class="form-control mb-4" placeholder="22년 1월">
 
-            <h5><span class="material-icons me-2">location_on</span>등 급</h5>
+            <h5><span class="material-icons me-2">leaderboard</span>등 급</h5>
             <input id="trim" type="text" name="trim" class="form-control mb-4" placeholder="프리미엄">
 
-            <h5><span class="material-icons me-2">location_on</span>유 종</h5>
+            <h5><span class="material-icons me-2">local_gas_station</span>유 종</h5>
             <input id="fuel" type="text" name="fuel" class="form-control mb-4" placeholder="휘발유/디젤/하이브리드/전기">
 
-            <h5><span class="material-icons me-2">location_on</span>구동방식</h5>
+            <h5><span class="material-icons me-2">settings</span>구동방식</h5>
             <input id="driveType" type="text" name="driveType" class="form-control mb-4" placeholder="2륜 또는 4륜">
 
-            <h5><span class="material-icons me-2">location_on</span>에어백 전개 부위</h5>
+            <h5><span class="material-icons me-2">car_crash</span>에어백 전개 부위</h5>
             <input id="airbag" type="text" name="airbag" class="form-control mb-4" placeholder="운전석, 운전석 측면, 조수석, 조수석 측면 등">
 
-            <h5><span class="material-icons me-2">location_on</span>주행거리(km)</h5>
+            <h5><span class="material-icons me-2">no_crash</span>주행거리(km)</h5>
             <input id="mileage" type="text" name="mileage" class="form-control mb-4" placeholder="">
 
-            <h5><span class="material-icons me-2">location_on</span>사고날짜</h5>
+            <h5><span class="material-icons me-2">event</span>사고날짜</h5>
             <input id="eventDate" type="text" name="eventDate" class="form-control mb-4" placeholder="22년 01월 02일">
 
-            <h5><span class="material-icons me-2">location_on</span>가해자 보험사</h5>
+            <h5><span class="material-icons me-2">business</span>가해자 보험사</h5>
             <input id="insuranceCompany" type="text" name="insuranceCompany" class="form-control mb-4" placeholder="">
 
             <h5><span class="material-icons me-2">location_on</span>사고차 보관지역</h5>
             <input id="location" type="text" name="location" class="form-control mb-4" placeholder="수원시">
 
-            <h5><span class="material-icons me-2">location_on</span>수리/견적금액</h5>
+            <h5><span class="material-icons me-2">paid</span>수리/견적금액</h5>
             <input id="repairCost" type="text" name="repairCost" class="form-control mb-4" placeholder="">
 
-            <h5><span class="material-icons me-2">location_on</span>보험사가 제시한 금액</h5>
+            <h5><span class="material-icons me-2">paid</span>보험사가 제시한 금액</h5>
             <input id="proposedCompensation" type="text" name="proposedCompensation" class="form-control mb-4" placeholder="전손 2,000만원 또는 미수선 1,500만원">
 
-            <h5><span class="material-icons me-2">location_on</span>본인 과실비율(%)</h5>
+            <h5><span class="material-icons me-2">percent</span>본인 과실비율(%)</h5>
             <input id="faultRatio" type="text" name="faultRatio" class="form-control mb-4" placeholder="10%">
 
-            <h5><span class="material-icons me-2">content_paste</span>기타항목</h5>
+            <h5><span class="material-icons me-2">check_box</span>기타항목</h5>
             <div class="border rounded-3 mb-4">
                 <div class="form-check, m-3">
                     <input class="form-check-input" type="checkbox" name="others1" value="확인" id="others1">
@@ -74,7 +79,7 @@
                 </div>
             </div>
             
-            <h5><span class="material-icons me-2">location_on</span>문의사항</h5>
+            <h5><span class="material-icons me-2">help_center</span>문의사항</h5>
             <textarea name="note" id="note" cols="30" rows="10" class="form-control mb-4"></textarea>
     
             <h5><span class="material-icons me-2">add_a_photo</span> 차량등록증</h5>
