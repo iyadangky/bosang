@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
     <div class="container">
         <form method="POST" action="{% url 'posts:record' post.id %}" enctype="multipart/form-data">
             {% csrf_token %}

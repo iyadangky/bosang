@@ -17,4 +17,5 @@ urlpatterns = [
     path('<int:post_id>/password/', views.password, name="password"),
     path('<int:post_id>/enter/', views.enter, name="enter"),
     path('download/', views.file_download, name='file_download'),
+    path('export_content/', views.export_content, name="export_content"),
 ]

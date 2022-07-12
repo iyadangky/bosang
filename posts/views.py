@@ -15,7 +15,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 # Create your views here.
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_at')
     context = {'posts' : posts}
     return render(request, 'posts/index.html', context)
 
@@ -208,3 +208,19 @@ def file_download(request):
     else:
         message = '알 수 없는 오류가 발행하였습니다.'
         return HttpResponse("<script>alert('"+ message +"');history.back()'</script>")
+
+@staff_member_required
+def export_content(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="regist_list.csv"'
+    response.write(u'\ufeff'.encode('utf8'))
+
+    writer = csv.writer(response)
+    writer.writerow(['client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition'])
+
+    rows = Post.objects.all().values_list('client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition') 
+    
+    for row in rows:
+        writer.writerow(row)
+
+    return response

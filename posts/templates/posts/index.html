@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <h5 class="mb-3">전손/미수선 상담신청 리스트</h5>
         {% if request.user.is_staff %}
         <table class="table text-center mb-4">
             <thead class="table-dark">
@@ -26,6 +25,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        <a href="{% url 'posts:export_content' %}" class="btn btn-primary mb-3">내려받기</a>
         {% else %}
             {% if request.user.is_authenticated %}
             <table class="table text-center mb-4">

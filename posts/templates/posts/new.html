@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <input id="price" type="hidden" name="price" class="form-control mb-4" placeholder="">

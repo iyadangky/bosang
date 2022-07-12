@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <h5 class="mb-3">전손/미수선 상담신청 페이지</h5>
         <form method="POST" action="{% url 'posts:update' post.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <h5><span class="material-icons me-2">badge</span>이 름</h5>
