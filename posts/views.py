@@ -8,9 +8,7 @@ import os
 from django.contrib.auth.decorators import login_required
 import csv
 from django.contrib.admin.views.decorators import staff_member_required
-# from django.contrib.auth.decorators import login_required
-# import csv
-# from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Q
 
 # Create your views here.
 
@@ -54,6 +52,7 @@ def create(request):
     note = request.POST.get('note')
     addition = request.POST.get('addition')
     price = request.POST.get('price')
+    opinion = request.POST.get('opinion')
     image1 = request.FILES.get('image1')
     image2 = request.FILES.get('image2')
     image3 = request.FILES.get('image3')
@@ -71,7 +70,7 @@ def create(request):
     image15 = request.FILES.get('image15')
     image16 = request.FILES.get('image16')
     image17 = request.FILES.get('image17')
-    post = Post(created_at=created_at, password=password, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
+    post = Post(created_at=created_at, password=password, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, opinion=opinion, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
     post.save()
     context = {'post' : post}
     return render(request, 'posts/create.html', context)
@@ -176,6 +175,7 @@ def bidding(request, post_id):
 def tender(request, post_id):
     post = Post.objects.get(id=post_id)
     post.price = request.POST.get('price')
+    post.opinion = request.POST.get('opinion')
     post.save()
     return redirect('posts:index')
 
@@ -216,11 +216,23 @@ def export_content(request):
     response.write(u'\ufeff'.encode('utf8'))
 
     writer = csv.writer(response)
-    writer.writerow(['client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition'])
+    writer.writerow(['client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition', 'price', 'opinion'])
 
-    rows = Post.objects.all().values_list('client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition') 
+    rows = Post.objects.all().values_list('client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition', 'price', 'opinion') 
     
     for row in rows:
         writer.writerow(row)
 
     return response
+
+def search(request):
+    posts = Post.objects.all().order_by('-created_at')
+    q = request.GET.get('q', "") 
+    if q:
+        posts = posts.filter(Q(carNumber__icontains=q) | Q(client__icontains=q)).distinct()
+        context = {'posts' : posts,}
+        return render(request, 'posts/index.html', context)
+    else:
+        posts = Post.objects.all().order_by('-created_at')
+        context = {'posts' : posts,}
+        return render(request, 'posts/index.html', context)
