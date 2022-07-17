@@ -9,12 +9,16 @@ from django.contrib.auth.decorators import login_required
 import csv
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def index(request):
+    page = request.GET.get('page', '1')
     posts = Post.objects.all().order_by('-created_at')
-    context = {'posts' : posts}
+    paginator = Paginator(posts, 10)
+    page_obj = paginator.get_page(page)
+    context = {'posts' : page_obj}
     return render(request, 'posts/index.html', context)
 
 @login_required
