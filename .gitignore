@@ -2,6 +2,7 @@
 *.log
 *.pot
 *.pyc
+*.pem
 __pycache__/
 bosang/settings.py
 db.sqlite3
