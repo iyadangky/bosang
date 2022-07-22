@@ -75,7 +75,7 @@
                         <tr>
                             <td>{{ post.id }}</td>
                             <td>{{ post.carModel }}</td>
-                            <td>{{ post.carNumber }}</td>
+                            <td>{{ post.carNumber_masked }}</td>
                             <td><a href="{% url 'posts:password' post.id %}">보기</a></td>
                         </tr>
                         {% endfor %}

@@ -38,6 +38,7 @@ def create(request):
     contact = request.POST.get('contact')
     carModel = request.POST.get('carModel')
     carNumber = request.POST.get('carNumber')
+    carNumber_masked = carNumber[:len(carNumber) - 2] + "**"
     birth = request.POST.get('birth')
     trim = request.POST.get('trim')
     fuel = request.POST.get('fuel')
@@ -74,7 +75,7 @@ def create(request):
     image15 = request.FILES.get('image15')
     image16 = request.FILES.get('image16')
     image17 = request.FILES.get('image17')
-    post = Post(created_at=created_at, password=password, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, opinion=opinion, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
+    post = Post(created_at=created_at, password=password, client=client, phoneNumber=phoneNumber, contact=contact, carModel=carModel, carNumber=carNumber, carNumber_masked=carNumber_masked, birth=birth, trim=trim, fuel=fuel, driveType=driveType, airbag=airbag, mileage=mileage, eventDate=eventDate, repairCost=repairCost, proposedCompensation=proposedCompensation, insuranceCompany=insuranceCompany, faultRatio=faultRatio, location=location, others1=others1, others2=others2, others3=others3, note=note, addition=addition, price=price, opinion=opinion, image1=image1, image2=image2, image3=image3, image4=image4, image5=image5, image6=image6, image7=image7, image8=image8, image9=image9, image10=image10, image11=image11, image12=image12, image13=image13, image14=image14, image15=image15, image16=image16, image17=image17)
     post.save()
     context = {'post' : post}
     return render(request, 'posts/create.html', context)
