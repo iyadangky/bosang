@@ -82,7 +82,8 @@ def create(request):
         context = {'post' : post}
         return render(request, 'posts/create.html', context)
     else:
-        return render(request, 'posts/new.html')
+        context = {'post' : post}
+        return render(request, 'posts/renew.html', context)
 
 def edit(request, post_id):
     post = Post.objects.get(id=post_id)

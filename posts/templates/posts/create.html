@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <h5><span class="material-icons me-2">check_box</span> 개인정보 이용 동의</h5>
+        <h5><span class="material-icons me-2">contact_emergency</span> 개인정보 이용 동의</h5>
             <div class="border rounded-3 mb-4">
                 {% if post.agreement %}
                 <div class="form-check mt-2 ms-3">
@@ -279,8 +279,8 @@
         </div>
     
         <a href="https://carbosang.modoo.at/" class="btn btn-primary ms-1 mb-3">홈으로</a>
-        <a href="https://cafe.naver.com/vtac?viewType=pc/" class="btn btn-primary ms-1 mb-3">신청완료</a>
-        <a href="{% url 'posts:edit' post.id %}" class="btn btn-primary ms-1 mb-3">본문수정</a>         
+        <a href="https://cafe.naver.com/vtac?viewType=pc/" class="btn btn-primary ms-1 mb-3">카페로</a>
+        <a href="{% url 'posts:edit' post.id %}" class="btn btn-primary ms-1 mb-3">수정하기</a>         
         
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
