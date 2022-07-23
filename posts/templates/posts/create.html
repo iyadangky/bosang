@@ -2,6 +2,20 @@
 {% load static %}
 {% block content %}
     <div class="container">
+        <h5><span class="material-icons me-2">check_box</span> 개인정보 이용 동의</h5>
+            <div class="border rounded-3 mb-4">
+                {% if post.agreement %}
+                <div class="form-check mt-2 ms-3">
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckCheckedDisabled" checked disabled>
+                    <label class="form-check-label" for="flexCheckCheckedDisabled">개인정보 이용에 동의함.</label>
+                </div>
+                {% else %}
+                <div class="form-check mt-2 ms-3">
+                    <input class="form-check-input" type="checkbox" value="확인" id="flexCheckDisabled" disabled>
+                    <label class="form-check-label" for="flexCheckDisabled">개인정보 이용에 동의하지 않음.</label>
+                </div>
+                {% endif %}
+            </div>
         <h5><span class="material-icons me-2">description</span> 상세내용</h5>
     
             <table class="table mb-4">

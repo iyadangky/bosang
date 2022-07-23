@@ -4,6 +4,7 @@ from django.db import models
 
 class Post(models.Model):
     created_at = models.DateTimeField()
+    agreement = models.CharField(max_length=50, null=True)
     password = models.CharField(max_length=50, null=True)
     client = models.CharField(max_length=50, null=True)
     phoneNumber = models.CharField(max_length=50, null=True)
