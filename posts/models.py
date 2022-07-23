@@ -10,6 +10,7 @@ class Post(models.Model):
     contact = models.CharField(max_length=50, null=True)
     carModel = models.CharField(max_length=50, null=True)
     carNumber = models.CharField(max_length=50, null=True)
+    carNumber_masked = models.CharField(max_length=50, null=True)
     birth = models.CharField(max_length=50, null=True)
     trim = models.CharField(max_length=50, null=True)
     fuel = models.CharField(max_length=50, null=True)
