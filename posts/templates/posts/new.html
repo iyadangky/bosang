@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <img class= "mb-1" id="profile" src="{% static 'posts/images/lion01.png' %}" alt="lion01">
+        <img class= "mb-1" id="profile" src="{% static 'posts/images/lion01.png' %}" alt="lion01">&nbsp;한국자동차보상센터
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="border rounded-3 mb-4">
