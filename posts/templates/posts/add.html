@@ -95,47 +95,69 @@
                 </div>
                 {% endif %}
             </div>
-            
+
             <h5><span class="material-icons me-2">help_center</span>문의사항</h5>
             <textarea name="note" id="note" cols="30" rows="10" class="form-control mb-4">{{ post.note }}</textarea>
     
+            {% if not post.image1 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 차량등록증</h5>
             <input type="file" class="form-control mb-4" name="image1" id="image1">
-            
+            {% endif %}
+
+            {% if not post.image2 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 견적서</h5>
             <input type="file" class="form-control mb-4" name="image2" id="image2">
+            {% endif %}
 
+            {% if not post.image3 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image3" id="image3">
+            {% endif %}
 
+            {% if not post.image4 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image4" id="image4">
+            {% endif %}
 
+            {% if not post.image5 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image5" id="image5">
+            {% endif %}
 
+            {% if not post.image6 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image6" id="image6">
+            {% endif %}
 
+            {% if not post.image7 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image7" id="image7">
-
+            {% endif %}
+            
+            {% if not post.image8 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image8" id="image8">
+            {% endif %}
 
+            {% if not post.image9 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image9" id="image9">
+            {% endif %}
 
+            {% if not post.image10 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image10" id="image10">
+            {% endif %}
 
+            {% if not post.image11 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image11" id="image11">
-
+            {% endif %}
+            
+            {% if not post.image12 %}
             <h5><span class="material-icons me-2">add_a_photo</span> 사진 및 기타 파일</h5>
             <input type="file" class="form-control mb-4" name="image12" id="image12">
-
-
+            {% endif %}
 
             <h5><span class="material-icons me-2">edit_note</span>추가기록</h5>
             <textarea name="addition" id="addition" cols="30" rows="10" class="form-control mb-4"></textarea>
