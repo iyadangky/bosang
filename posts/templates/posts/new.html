@@ -2,12 +2,13 @@
 {% load static %}
 {% block content %}
     <div class="container">
+        <img class= "mb-1" id="profile" src="{% static 'posts/images/lion01.png' %}" alt="lion01">&nbsp;한국자동차보상센터
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="border rounded-3 mb-4">
                 <h5 class= "mt-2">&#60;개인정보 수집 및 이용에 대한 안내&#62;</h5>
-                <h5 style="font-size:15px" class= "mt-1">1. 수집/이용 목적 : 주문,예약,문의 등 고객요청 처리 및 결과 회신</h5>
-                <h5 style="font-size:15px" class= "mt-1">2. 수집하는 항목 : 이름,연락처,주소,이메일</h5>
+                <h5 style="font-size:15px" class= "mt-1">1. 수집/이용 목적 : 주문,예약,문의 등 고객요청 처리 및 결과 회신,마케팅에 활용</h5>
+                <h5 style="font-size:15px" class= "mt-1">2. 수집하는 항목 : 이름,연락처,주소,이메일,이미지,사고상황</h5>
                 <h5 style="font-size:15px" class= "mt-1">3. 보유 / 이용 기간 : 고객요청 처리 후 3개월</h5>
                 <h5 style="font-size:15px" class= "mt-1">4. 동의를 거부할 수 있으며, 거부시 이용이 제한될 수 있습니다.</h5>
                 <div class="form-check, m-1">
@@ -137,4 +138,10 @@
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<style>
+    #profile { 
+        width: 50px;
+    }
+</style>
 {% endblock %}
