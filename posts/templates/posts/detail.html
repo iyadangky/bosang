@@ -178,8 +178,7 @@
             <h5><span class="material-icons me-2">image</span> 차량등록증</h5>
             <div class='mb-4'>
                 <a href="/posts/download?path={{ post.image1 }}">{{ post.image1 }}</a>
-                {{ post.image1.url }}
-                <img class="img-fluid rounded mx-auto d-block" style="width: 500px;" src="/{{ post.image1 }}" alt="차량등록증">
+                <img class="img-fluid rounded mx-auto d-block" style="width: 500px;" src="{{ post.image1.url }}" alt="차량등록증">
             </div>
             {% endif %}
         </div>
@@ -199,7 +198,7 @@
             <h5><span class="material-icons me-2">image</span> 사진 및 기타 파일</h5>
             <div class='mb-4'>
                 <a href="/posts/download?path={{ post.image3 }}">{{ post.image3 }}</a>
-                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="/{{ post.image3 }}" alt="사진 및 기타 파일">
+                <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image3.url }}" alt="사진 및 기타 파일">
             </div>
             {% endif %}
         </div>
