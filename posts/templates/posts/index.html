@@ -14,6 +14,8 @@
         </div>
         <div class="nemo2"></div>
         <div class="item">
+            
+            <!-- 스테프 화면 -->
             {% if request.user.is_staff %}
             <table class="table text-center mb-4">
                 <thead class="table-dark">
@@ -38,7 +40,10 @@
                 </tbody>
             </table>
             <a href="{% url 'posts:export_content' %}" class="btn btn-primary mb-3">내려받기</a>
+
             {% else %}
+                
+                <!-- 협력업체 화면 -->
                 {% if request.user.is_authenticated %}
                 <table class="table text-center mb-4">
                     <thead class="table-dark">

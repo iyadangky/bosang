@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+    <!-- 고객이 개인정보이용동의를 안했을 때 보는 화면 -->
     <div class="container">
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
             {% csrf_token %}

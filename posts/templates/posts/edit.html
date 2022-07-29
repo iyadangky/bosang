@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+    <!-- 고객이 글 수정할 때 보는 화면 -->
     <div class="container">
         <form method="POST" action="{% url 'posts:update' post.id %}" enctype="multipart/form-data">
             {% csrf_token %}
@@ -56,7 +58,7 @@
             <input id="insuranceCompany" type="text" name="insuranceCompany" value="{{ post.insuranceCompany }}" class="form-control mb-4">
 
             
-
+            <!-- 체크 박스 수정 기능 -->
             <h5><span class="material-icons me-2">check_box</span> 기타항목</h5>
             <div class="border rounded-3 mb-4">
                 {% if post.others1 %}
@@ -95,10 +97,13 @@
                 </div>
                 {% endif %}
             </div>
+
             
             <h5><span class="material-icons me-2">help_center</span>문의사항</h5>
             <textarea name="note" id="note" cols="30" rows="10" class="form-control mb-4">{{ post.note }}</textarea>
     
+
+            <!-- 그림 파일 수정 기능 -->
             <h5><span class="material-icons me-2">add_a_photo</span> 차량등록증</h5>
             <input type="file" class="form-control mb-4" name="image1" id="image1">
             
