@@ -115,66 +115,55 @@ def update(request, post_id):
     post.others2 = request.POST.get('others2')
     post.others3 = request.POST.get('others3')
     post.note = request.POST.get('note')
-    if post.image1:
-        pass
-    else:
-        post.image1 = request.FILES.get('image1')
     
-    if post.image2:
-        pass
-    else:
-        post.image2 = request.FILES.get('image2')
+    image1 = request.FILES.get('image1')
+    if image1:
+        post.image1 = image1
     
-    if post.image3:
-        pass
-    else:
-        post.image3 = request.FILES.get('image3')
+    image2 = request.FILES.get('image2')
+    if image2:
+        post.image2 = image2
+
+    image3 = request.FILES.get('image3')
+    if image3:
+        post.image3 = image3
     
-    if post.image4:
-        pass
-    else:
-        post.image4 = request.FILES.get('image4')
-    
-    if post.image5:
-        pass
-    else:
-        post.image5 = request.FILES.get('image5')
-    
-    if post.image6:
-        pass
-    else:
-        post.image6 = request.FILES.get('image6')
-    
-    if post.image7:
-        pass
-    else:
-        post.image7 = request.FILES.get('image7')
-    
-    if post.image8:
-        pass
-    else:
-        post.image8 = request.FILES.get('image8')
-    
-    if post.image9:
-        pass
-    else:
-        post.image9 = request.FILES.get('image9')
-    
-    if post.image10:
-        pass
-    else:
-        post.image10 = request.FILES.get('image10')
-    
-    if post.image11:
-        pass
-    else:
-        post.image11 = request.FILES.get('image11')
-    
-    if post.image12:
-        pass
-    else:
-        post.image12 = request.FILES.get('image12')
-    
+    image4 = request.FILES.get('image4')
+    if image4:
+        post.image4 = image4
+
+    image5 = request.FILES.get('image5')
+    if image5:
+        post.image5 = image5
+
+    image6 = request.FILES.get('image6')
+    if image6:
+        post.image6 = image6
+
+    image7 = request.FILES.get('image7')
+    if image7:
+        post.image7 = image7
+
+    image8 = request.FILES.get('image8')
+    if image8:
+        post.image8 = image8
+
+    image9 = request.FILES.get('image9')
+    if image9:
+        post.image9 = image9
+
+    image10 = request.FILES.get('image10')
+    if image10:
+        post.image10 = image10
+
+    image11 = request.FILES.get('image11')
+    if image11:
+        post.image11 = image11
+
+    image12 = request.FILES.get('image12')
+    if image12:
+        post.image12 = image12
+
     post.save()
     context = {'post' : post}
     return render(request, 'posts/create.html', context)
@@ -212,95 +201,73 @@ def record(request, post_id):
     post.note = request.POST.get('note')
     post.addition = request.POST.get('addition')
     
-    if post.image1:
-        pass
-    else:
-        post.image1 = request.FILES.get('image1')
+    image1 = request.FILES.get('image1')
+    if image1:
+        post.image1 = image1
     
-    if post.image2:
-        pass
-    else:
-        post.image2 = request.FILES.get('image2')
-    
-    if post.image3:
-        pass
-    else:
-        post.image3 = request.FILES.get('image3')
-    
-    if post.image4:
-        pass
-    else:
-        post.image4 = request.FILES.get('image4')
-    
-    if post.image1:
-        pass
-    else:
-        post.image4 = request.FILES.get('image4')
-    
-    if post.image5:
-        pass
-    else:
-        post.image5 = request.FILES.get('image5')
-    
-    if post.image6:
-        pass
-    else:
-        post.image6 = request.FILES.get('image6')
-    
-    if post.image7:
-        pass
-    else:
-        post.image7 = request.FILES.get('image7')
-    
-    if post.image8:
-        pass
-    else:
-        post.image8 = request.FILES.get('image8')
-    
-    if post.image9:
-        pass
-    else:
-        post.image9 = request.FILES.get('image9')
-    
-    if post.image10:
-        pass
-    else:
-        post.image10 = request.FILES.get('image10')
-    
-    if post.image11:
-        pass
-    else:
-        post.image11 = request.FILES.get('image11')
-    
-    if post.image12:
-        pass
-    else:
-        post.image12 = request.FILES.get('image12')
+    image2 = request.FILES.get('image2')
+    if image2:
+        post.image2 = image2
 
-    if post.image13:
-        pass
-    else:
-        post.image13 = request.FILES.get('image13')
+    image3 = request.FILES.get('image3')
+    if image3:
+        post.image3 = image3
+    
+    image4 = request.FILES.get('image4')
+    if image4:
+        post.image4 = image4
 
-    if post.image14:
-        pass
-    else:
-        post.image14 = request.FILES.get('image14')
+    image5 = request.FILES.get('image5')
+    if image5:
+        post.image5 = image5
 
-    if post.image15:
-        pass
-    else:
-        post.image15 = request.FILES.get('image15')
+    image6 = request.FILES.get('image6')
+    if image6:
+        post.image6 = image6
 
-    if post.image16:
-        pass
-    else:
-        post.image16 = request.FILES.get('image16')
+    image7 = request.FILES.get('image7')
+    if image7:
+        post.image7 = image7
 
-    if post.image17:
-        pass
-    else:
-        post.image17 = request.FILES.get('image17')
+    image8 = request.FILES.get('image8')
+    if image8:
+        post.image8 = image8
+
+    image9 = request.FILES.get('image9')
+    if image9:
+        post.image9 = image9
+
+    image10 = request.FILES.get('image10')
+    if image10:
+        post.image10 = image10
+
+    image11 = request.FILES.get('image11')
+    if image11:
+        post.image11 = image11
+
+    image12 = request.FILES.get('image12')
+    if image12:
+        post.image12 = image12
+
+    image13 = request.FILES.get('image13')
+    if image13:
+        post.image13 = image13
+
+    image14 = request.FILES.get('image14')
+    if image14:
+        post.image14 = image14
+
+    image15 = request.FILES.get('image15')
+    if image15:
+        post.image15 = image15
+
+    image16 = request.FILES.get('image16')
+    if image16:
+        post.image16 = image16
+
+    image17 = request.FILES.get('image17')
+    if image17:
+        post.image17 = image17
 
     post.save()
     context = {'post' : post}
