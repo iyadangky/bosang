@@ -98,6 +98,7 @@ def update(request, post_id):
     post.contact = request.POST.get('contact')
     post.carModel = request.POST.get('carModel')
     post.carNumber = request.POST.get('carNumber')
+    post.carNumber_masked = post.carNumber[:len(post.carNumber) - 2] + "**"
     post.birth = request.POST.get('birth')
     post.trim = request.POST.get('trim')
     post.fuel = request.POST.get('fuel')
@@ -130,11 +131,6 @@ def update(request, post_id):
         post.image3 = request.FILES.get('image3')
     
     if post.image4:
-        pass
-    else:
-        post.image4 = request.FILES.get('image4')
-    
-    if post.image1:
         pass
     else:
         post.image4 = request.FILES.get('image4')
@@ -197,6 +193,7 @@ def record(request, post_id):
     post.contact = request.POST.get('contact')
     post.carModel = request.POST.get('carModel')
     post.carNumber = request.POST.get('carNumber')
+    post.carNumber_masked = post.carNumber[:len(post.carNumber) - 2] + "**"
     post.birth = request.POST.get('birth')
     post.trim = request.POST.get('trim')
     post.fuel = request.POST.get('fuel')
