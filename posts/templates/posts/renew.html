@@ -6,6 +6,7 @@
     <div class="container">
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
             {% csrf_token %}
+            
             <div class="border rounded-3 mb-4">
                 <h5 class= "mt-1">&#60;개인정보 수집 및 이용에 대한 안내&#62;</h5>
                 <h5 style="font-size:15px" class= "mt-1">1. 수집/이용 목적 : 주문,예약,문의 등 고객요청 처리 및 결과 회신,마케팅에 활용</h5>
