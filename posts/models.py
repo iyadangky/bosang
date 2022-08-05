@@ -48,4 +48,5 @@ class Post(models.Model):
     image15 = models.FileField(upload_to='posts', null=True)
     image16 = models.FileField(upload_to='posts', null=True)
     image17 = models.FileField(upload_to='posts', null=True)
+    file_name = models.CharField(max_length=50, null=True)
    

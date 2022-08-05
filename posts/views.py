@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.conf import settings
 from .models import Post
 from django.utils import timezone
@@ -10,7 +10,8 @@ import csv
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q
 from django.core.paginator import Paginator
-
+import urllib
+import mimetypes
 # Create your views here.
 
 def index(request):
@@ -303,12 +304,12 @@ def enter(request, post_id):
 def file_download(request):
     path = request.GET['path']
     file_path = os.path.join(settings.MEDIA_ROOT, path)
- 
+    file_name = urllib.parse.quote(string='', safe='', encoding='utf-8')
     if  os.path.exists(file_path):
-        binary_file = open(file_path, 'rb')
-        response = HttpResponse(binary_file.read(), content_type="application/octet-stream; charset=utf-8")
-        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
-        return response
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type=mimetypes.guess_type(file_path)[0])
+            response['Content-Disposition'] = 'attachment;filename*=UTF-8\'\'%s' % file_name
+            return response
     else:
         message = '알 수 없는 오류가 발행하였습니다.'
         return HttpResponse("<script>alert('"+ message +"');history.back()'</script>")
