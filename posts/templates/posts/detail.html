@@ -309,6 +309,61 @@
             {% endif %}
         </div>
 
+        <h5><span class="material-icons me-2">edit_note</span> 추가기록</h5>
+        <div class="border rounded-3 mb-4">
+            <h5 class="m-2" style="font-size:15px" >{{ post.addition }}</h5>
+        </div>
+
+    <div>
+        {% if post.image13 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <a href="/posts/download?path={{ post.image13 }}">다운로드</a>
+            <img class="img-fluid rounded mx-auto d-block" style="width: 500px;" src="{{ post.image13.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image14 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <a href="/posts/download?path={{ post.image14 }}">다운로드</a>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image14.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image15 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <a href="/posts/download?path={{ post.image15 }}">다운로드</a>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image15.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image16 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <a href="/posts/download?path={{ post.image16 }}">다운로드</a>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image16.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if post.image17 %}
+        <h5><span class="material-icons me-2">image</span>  추가 사진 및 파일</h5>
+        <div class='mb-4'>
+            <a href="/posts/download?path={{ post.image17 }}">다운로드</a>
+            <img class="img-fluid rounded mx-auto d-block"  style="width: 500px;" src="{{ post.image17.url }}" alt="추가 사진 및 파일">
+        </div>
+        {% endif %}
+    </div>
+
         <a href="{% url 'posts:index' %}" class="btn btn-primary ms-1 mb-3">전체목록</a>
         <a href="{% url 'posts:add' post.id %}" class="btn btn-primary ms-1 mb-3">추가기록</a>        
     </div>
