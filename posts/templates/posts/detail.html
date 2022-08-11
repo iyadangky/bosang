@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+    <!-- 스태프와 협력업체만 보는 화면 -->
     <!-- 스태프 화면 -->
     {% if request.user.is_staff %}
     <div class="container">
@@ -111,8 +111,13 @@
                     </tr>
 
                     <tr>
-                        <td class="cell text-center">가해자 보험사</td>
+                        <td class="cell text-center">상대 보험사</td>
                         <td class="text-center">{{ post.insuranceCompany }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="cell text-center">내 보험사</td>
+                        <td class="text-center">{{ post.insuranceCompany_me }}</td>
                     </tr>
 
                     <tr>

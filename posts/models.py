@@ -22,6 +22,7 @@ class Post(models.Model):
     repairCost = models.CharField(max_length=50, null=True)
     proposedCompensation = models.CharField(max_length=50, null=True)
     insuranceCompany = models.CharField(max_length=50, null=True)
+    insuranceCompany_me = models.CharField(max_length=50, null=True)
     faultRatio = models.CharField(max_length=50, null=True)
     location = models.CharField(max_length=50, null=True)
     others1 = models.CharField(max_length=50, null=True)

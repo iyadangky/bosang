@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <!-- 고객이 새글을 쓸 때 보는 화면 -->
     <div class="container">
         <img class= "mb-1" id="profile" src="{% static 'posts/images/lion01.png' %}" alt="lion01">&nbsp;한국자동차보상센터
         <form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data">
@@ -60,8 +61,11 @@
             <h5><span class="material-icons me-2">event</span>사고날짜</h5>
             <input id="eventDate" type="text" name="eventDate" class="form-control mb-4" placeholder="22년 01월 02일">
 
-            <h5><span class="material-icons me-2">business</span>가해자 보험사</h5>
+            <h5><span class="material-icons me-2">business</span>상대 보험사</h5>
             <input id="insuranceCompany" type="text" name="insuranceCompany" class="form-control mb-4" placeholder="">
+
+            <h5><span class="material-icons me-2">business</span>내 보험사</h5>
+            <input id="insuranceCompany_me" type="text" name="insuranceCompany_me" class="form-control mb-4" placeholder="">
 
             <h5><span class="material-icons me-2">location_on</span>사고차 보관지역</h5>
             <input id="location" type="text" name="location" class="form-control mb-4" placeholder="수원시">
