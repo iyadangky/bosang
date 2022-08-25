@@ -24,7 +24,6 @@
                         <th>의뢰인</th>
                         <th>차량명</th>
                         <th>차량번호</th>
-                        <th>상세</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +32,7 @@
                         <td>{{ post.id }}</td>
                         <td>{{ post.client }}</td>
                         <td>{{ post.carModel }}</td>
-                        <td>{{ post.carNumber }}</td>
-                        <td><a href="{% url 'posts:detail' post.id %}">보기</a></td>
+                        <td><a href="{% url 'posts:detail' post.id %}">{{ post.carNumber }}</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -51,7 +49,6 @@
                             <th>번호</th>
                             <th>차량명</th>
                             <th>차량번호</th>
-                            <th>상세</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,8 +56,7 @@
                         <tr>
                             <td>{{ post.id }}</td>
                             <td>{{ post.carModel }}</td>
-                            <td>{{ post.carNumber }}</td>
-                            <td><a href="{% url 'posts:detail' post.id %}">보기</a></td>
+                            <td><a href="{% url 'posts:detail' post.id %}">{{ post.carNumber }}</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -72,7 +68,6 @@
                             <th>번호</th>
                             <th>차량명</th>
                             <th>차량번호</th>
-                            <th>상세</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,8 +75,7 @@
                         <tr>
                             <td>{{ post.id }}</td>
                             <td>{{ post.carModel }}</td>
-                            <td>{{ post.carNumber_masked }}</td>
-                            <td><a href="{% url 'posts:password' post.id %}">보기</a></td>
+                            <td><a href="{% url 'posts:password' post.id %}">{{ post.carNumber_masked }}</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
