@@ -324,9 +324,9 @@ def export_content(request):
     response.write(u'\ufeff'.encode('utf8'))
 
     writer = csv.writer(response)
-    writer.writerow(['client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition', 'price', 'opinion'])
+    writer.writerow(['id','client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition', 'price', 'opinion'])
 
-    rows = Post.objects.all().values_list('client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition', 'price', 'opinion') 
+    rows = Post.objects.all().values_list('id','client', 'phoneNumber', 'contact', 'carModel', 'carNumber', 'carModel', 'birth', 'trim', 'fuel', 'driveType', 'airbag', 'mileage', 'eventDate', 'repairCost', 'proposedCompensation', 'insuranceCompany', 'faultRatio', 'others1', 'others2', 'others3', 'note', 'addition', 'price', 'opinion') 
     
     for row in rows:
         writer.writerow(row)
